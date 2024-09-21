@@ -9,12 +9,41 @@
     <title>Flower</title>
   </head>
   <body class="container">
-    <audio src="sound/Rolon.mp3" autoplay></audio>
+    <div class="custom-audio-control">
+      <button id="playPauseBtn">⏸️</button>
+      <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
+  </div>
+  <audio id="backgroundAudio" autoplay>
+      <source src="sound/PalidaLuna.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+  
+  <script>
+    var audio = document.getElementById("backgroundAudio");
+    var volumeControl = document.getElementById("volumeControl");
+    var playPauseBtn = document.getElementById("playPauseBtn");
+
+    // Controlar el volumen del audio
+    volumeControl.addEventListener("input", function() {
+        audio.volume = this.value;
+    });
+
+    // Controlar la reproducción y pausa
+    playPauseBtn.addEventListener("click", function() {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = "⏸️";  // Cambiar a ícono de pausa
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = "▶️";  // Cambiar a ícono de reproducción
+        }
+    });
+</script>
+  
     <div id="lyrics">
      
     </div>
-    <h1 class="titulo">Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br> <br>
-      Gracias por iluminar mis días con tu presencia.</h1>
+    <h1 class="titulo">¿Cuentan como dibujadas? <br>Feliz 21 :)</h1>
   
     <div class="night"></div>
     <div class="flowers">
